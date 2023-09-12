@@ -3,8 +3,6 @@ package objects;
 
 import java.util.Random;
 
-import objects.Utility; 
-
 
 
 public class deck {
@@ -12,10 +10,10 @@ public class deck {
     private Card[] decks; 
     private Card top; 
 
-    public deck(Card[] cardDeck) {
-        this.decks = cardDeck;
+    public deck() {
+        this.decks = populateDeck();
         this.size = 52;
-        this.top = cardDeck[0]; 
+        this.top = decks[0]; 
     }
 
     public int getSize() { return size; }
@@ -77,9 +75,24 @@ public class deck {
 
     }
 
-    
-    
+    public Card[] populateDeck() {
+        Card[] deck = new Card[52]; 
+        int a = 0;
+        for (int i = 1; i < 5; i++)
+        {
+            for (int j = 2; j < 15; j++)
+            {
+                Card currentCard = new Card(i, j); 
+               deck[a] = currentCard; 
+               a++; 
+            }
+        }
 
+        return deck; 
+
+    
+    
+    }
 
     
 }
