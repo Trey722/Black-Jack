@@ -27,6 +27,8 @@ public class deck {
         return rand.nextInt((max - min) + 1) + min;
     }
 
+    //Shuffles Deck
+
     public void shuffleDeck(){
 
         int a, b; 
@@ -44,6 +46,7 @@ public class deck {
         }
     }
 
+        //Deals a card
     public Card deal() {
         if (size > 0) {
             Card card = decks[0]; 
@@ -66,6 +69,7 @@ public class deck {
         }
     }
 
+    //Prints every card in the deck 
     public void printDeck(){
 
         for (int i = 0; i < size - 1; i++)
@@ -75,6 +79,7 @@ public class deck {
 
     }
 
+    //Populates the deck
     public Card[] populateDeck() {
         Card[] deck = new Card[52]; 
         int a = 0;
