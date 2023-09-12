@@ -3,44 +3,64 @@ package objects;
 
 import java.util.Random;
 
+import objects.Utility; 
+
+
 
 public class deck {
     private int size; 
-    private Card[] deck; 
+    private Card[] decks; 
     private Card top; 
+
+    public deck(Card[] cardDeck) {
+        this.decks = cardDeck;
+        this.size = 52;
+        this.top = cardDeck[0]; 
+    }
 
     public int getSize() { return size; }
 
     public Card getTopCard() {return top;}
 
-    public void shuffleDeck(){
-        Random rand = new Random();
 
-        for (int i = size - 1; i > 0; i--) {
-            int j = rand.nextInt(i + 1); // Generate a random index between 0 and i (inclusive)
-    
-            // Swap the cards at index i and j
-            Card temp = deck[i];
-            deck[i] = deck[j];
-            deck[j] = temp;
+    //Helper function to get random int between two numbers
+    public int generateRandomNumber(int min, int max) {
+        Random rand = new Random();
+        return rand.nextInt((max - min) + 1) + min;
+    }
+
+    public void shuffleDeck(){
+
+        int a, b; 
+
+        Card temp; 
+
+        for (int i = 0; i < 10; i++) {
+            a = generateRandomNumber(0, size - 1); 
+            b = generateRandomNumber(0, size - 1); 
+
+            temp = decks[a]; 
+            decks[a] = decks[b]; 
+            decks[b] = temp; 
+            
         }
     }
 
     public Card deal() {
         if (size > 0) {
-            Card card = deck[0]; 
+            Card card = decks[0]; 
     
             
             for (int i = 1; i < size; i++) {
-                deck[i - 1] = deck[i];
+                decks[i - 1] = decks[i];
             }
     
             
-            deck[size - 1] = null;
+            decks[size - 1] = null;
     
            
             size--;
-            top = size > 0 ? deck[0] : null;
+            top = size > 0 ? decks[0] : null;
     
             return card;
         } else {
@@ -50,12 +70,14 @@ public class deck {
 
     public void printDeck(){
 
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < size - 1; i++)
         {
-            System.out.println("The card color is " + deck[i].getColor() + "The value is" + deck[i].getValue());
+            System.out.println("The card color is " + decks[i].getColor() + "The value is" + decks[i].getValue());
         }
 
     }
+
+    
     
 
 

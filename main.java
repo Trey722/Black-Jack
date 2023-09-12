@@ -1,7 +1,38 @@
-import objects;
+import objects.deck;
+import objects.Card;
 
-public class main {
-    deck Deck = new deck(); 
+public class Main {
 
-    Deck.printDeck(); 
+    public static Card[] populateDeck() {
+        Card[] deck = new Card[52]; 
+        int a = 0;
+        for (int i = 1; i < 5; i++)
+        {
+            for (int j = 2; j < 15; j++)
+            {
+                Card currentCard = new Card(i, j); 
+               deck[a] = currentCard; 
+               a++; 
+            }
+        }
+
+        return deck; 
+    }
+
+
+    public static void main(String[] args) {
+        deck Deck = new deck(populateDeck());
+    
+
+        Deck.deal(); 
+
+        Deck.printDeck(); 
+
+
+
+        
+    }
+
+   
 }
+
