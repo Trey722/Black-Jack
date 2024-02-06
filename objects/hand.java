@@ -1,19 +1,14 @@
 package objects;
 
 public class hand {
-    private int size; 
-        private Card card1; 
-        private Card card2; 
-        private Card[] extra; 
+        int size;
+        Card[] cards; 
         int extraSize; 
 
-       public hand(Card card1, Card card2)
+       public hand()
        {
-        this.card1 = card1; 
-        this.card2 = card2; 
-        Card cards = Card[52]; 
-        this.extra = cards; 
-        extraSize = 0; 
+        Card cards[] = {}; 
+        this.cards = cards; 
         this.size = 0; 
        }
 
@@ -22,11 +17,30 @@ public class hand {
         }
 
         public Card getCard1() {
-            return card1; 
+            if (size > 0)
+            {
+                return cards[0]; 
+            }
+
+            throw new Error("The hand does not have enough cards");
         }
 
         public Card getCard2(){
-            return card2; 
+            if (size > 1)
+            {
+                return cards[1]; 
+
+            }
+
+            throw new Error("The hand does not have enough cards");
+        }
+
+        public int addCard(Card card) {
+             size += 1;
+            cards[size]  = card; 
+        
+            return 0; 
+
         }
 
 }
